@@ -19,9 +19,23 @@ export const ClassicTemplate: React.FC<ClassicTemplateProps> = ({ data }) => {
     <div className="p-8 bg-white text-slate-800 font-sans leading-relaxed">
       {/* Header */}
       <div className="text-center mb-10 pb-8 border-b-2 border-slate-200">
-        <h1 className="text-4xl font-serif font-bold text-slate-900 mb-4 tracking-tight">
-          {personalInfo.fullName}
-        </h1>
+        <div className="flex items-center justify-center mb-6">
+          {personalInfo.profileImage && (
+            <div className="mr-6">
+              <img
+                src={personalInfo.profileImage}
+                alt="Foto de perfil"
+                className="w-32 h-32 rounded-lg object-cover border-4 border-slate-200 shadow-lg"
+              />
+            </div>
+          )}
+          <div className="flex-1">
+            <h1 className="text-4xl font-serif font-bold text-slate-900 mb-4 tracking-tight">
+              {personalInfo.fullName}
+            </h1>
+          </div>
+        </div>
+        
         <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-slate-600 mb-4">
           {personalInfo.email && (
             <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg">

@@ -30,9 +30,19 @@ export const CreativeTemplate: React.FC<CreativeTemplateProps> = ({ data }) => {
         
         {/* Profile */}
         <div className="text-center mb-10 relative z-10">
-          <div className="w-32 h-32 bg-gradient-to-br from-white/30 to-white/10 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-white/20 backdrop-blur-sm">
-            <span className="text-4xl font-bold font-serif">{personalInfo.fullName.charAt(0)}</span>
-          </div>
+          {personalInfo.profileImage ? (
+            <div className="w-32 h-32 mx-auto mb-6">
+              <img
+                src={personalInfo.profileImage}
+                alt="Foto de perfil"
+                className="w-32 h-32 rounded-full object-cover border-4 border-white/30 shadow-lg"
+              />
+            </div>
+          ) : (
+            <div className="w-32 h-32 bg-gradient-to-br from-white/30 to-white/10 rounded-full mx-auto mb-6 flex items-center justify-center border-4 border-white/20 backdrop-blur-sm">
+              <span className="text-4xl font-bold font-serif">{personalInfo.fullName.charAt(0)}</span>
+            </div>
+          )}
           <h1 className="text-2xl font-serif font-bold mb-2 leading-tight">{personalInfo.fullName}</h1>
           <div className="w-16 h-1 bg-white/60 mx-auto rounded-full"></div>
         </div>

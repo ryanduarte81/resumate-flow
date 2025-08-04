@@ -1,19 +1,67 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { PersonalInfo } from '@/types/resume';
-import { FiUser, FiMail, FiPhone, FiMapPin, FiGlobe, FiLinkedin, FiGithub } from 'react-icons/fi';
+import { Button } from '@/components/ui/button';
+import { PersonalInfo, TemplateStyle } from '@/types/resume';
+import { FiUser, FiMail, FiPhone, FiMapPin, FiGlobe, FiLinkedin, FiGithub, FiCamera, FiX } from 'react-icons/fi';
 
 interface PersonalInfoFormProps {
   data: PersonalInfo;
   onChange: (data: PersonalInfo) => void;
+  selectedTemplate: TemplateStyle;
 }
 
-export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ data, onChange }) => {
+export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ data, onChange, selectedTemplate }) => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const handleChange = (field: keyof PersonalInfo, value: string) => {
     onChange({ ...data, [field]: value });
+  };
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        handleChange('profileImage', result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = () => {
+    handleChange('profileImage', '');
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  // Determinar o formato da foto baseado no template
+  const getImageFormat = () => {
+    switch (selectedTemplate) {
+      case 'creative':
+        return 'rounded-full'; // Redondo para template criativo
+      case 'classic':
+      case 'technical':
+      default:
+        return 'rounded-lg'; // Quadrado com bordas arredondadas para outros templates
+    }
+  };
+
+  const getFormatDescription = () => {
+    switch (selectedTemplate) {
+      case 'creative':
+        return 'Formato: Redondo (adequado para template criativo)';
+      case 'classic':
+        return 'Formato: Quadrado (adequado para template clássico)';
+      case 'technical':
+        return 'Formato: Quadrado (adequado para template técnico)';
+      default:
+        return 'Formato: Quadrado';
+    }
   };
 
   return (
@@ -21,6 +69,67 @@ export const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ data, onChan
       <div className="flex items-center space-x-2 mb-6">
         <FiUser className="h-5 w-5 text-primary" />
         <h2 className="text-lg font-semibold text-text-primary">Informações Pessoais</h2>
+      </div>
+
+      {/* Foto de Perfil */}
+      <div className="mb-6">
+        <Label className="text-text-secondary font-medium mb-3 block">Foto de Perfil</Label>
+        <div className="flex items-center space-x-4">
+          <div className="relative">
+            {data.profileImage ? (
+              <div className="relative">
+                <img
+                  src={data.profileImage}
+                  alt="Foto de perfil"
+                  className={`w-24 h-24 object-cover border-2 border-accent ${getImageFormat()}`}
+                />
+                <button
+                  onClick={removeImage}
+                  className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors"
+                >
+                  <FiX className="h-3 w-3" />
+                </button>
+              </div>
+            ) : (
+              <div className={`w-24 h-24 bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center ${getImageFormat()}`}>
+                <FiCamera className="h-8 w-8 text-gray-400" />
+              </div>
+            )}
+          </div>
+          <div className="flex flex-col space-y-2">
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              className="hidden"
+              id="profile-image"
+            />
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => fileInputRef.current?.click()}
+              className="w-fit"
+            >
+              <FiCamera className="h-4 w-4 mr-2" />
+              {data.profileImage ? 'Alterar Foto' : 'Adicionar Foto'}
+            </Button>
+            {data.profileImage && (
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={removeImage}
+                className="w-fit text-red-600 hover:text-red-700"
+              >
+                <FiX className="h-4 w-4 mr-2" />
+                Remover Foto
+              </Button>
+            )}
+          </div>
+        </div>
+        <p className="text-xs text-text-muted mt-2">
+          Formatos aceitos: JPG, PNG. Tamanho máximo: 5MB. {getFormatDescription()}
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

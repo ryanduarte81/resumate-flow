@@ -26,8 +26,17 @@ export const TechnicalTemplate: React.FC<TechnicalTemplateProps> = ({ data }) =>
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 to-green-400"></div>
         
         <div className="text-center relative z-10">
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="flex items-center justify-center gap-4 mb-4">
             <FiTerminal className="h-8 w-8 text-cyan-400" />
+            {personalInfo.profileImage && (
+              <div className="w-16 h-16">
+                <img
+                  src={personalInfo.profileImage}
+                  alt="Foto de perfil"
+                  className="w-16 h-16 rounded-md object-cover border-2 border-green-400"
+                />
+              </div>
+            )}
             <h1 className="text-4xl font-bold tracking-wider text-white">{personalInfo.fullName}</h1>
             <FiTerminal className="h-8 w-8 text-cyan-400" />
           </div>

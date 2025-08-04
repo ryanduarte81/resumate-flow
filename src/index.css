@@ -66,8 +66,8 @@
     --radius-xl: 1rem;
 
     /* Professional Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(222 84% 20%), hsl(222 84% 35%));
-    --gradient-accent: linear-gradient(135deg, hsl(212 100% 48%), hsl(212 100% 60%));
+    --gradient-primary: linear-gradient(135deg, hsl(220, 20%, 15%), hsl(222 84% 35%));
+    --gradient-accent: linear-gradient(135deg, hsl(212, 91%, 30%), hsl(212, 100%, 50%));
     --gradient-subtle: linear-gradient(180deg, hsl(220 9% 98%), hsl(220 9% 96%));
 
     /* Shadows */

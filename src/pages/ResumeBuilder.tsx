@@ -7,6 +7,7 @@ import { Header } from '@/components/Layout/Header';
 import { PersonalInfoForm } from '@/components/Resume/PersonalInfoForm';
 import { ExperienceForm } from '@/components/Resume/ExperienceForm';
 import { SkillsForm } from '@/components/Resume/SkillsForm';
+import { EducationForm } from '@/components/Resume/EducationForm';
 import { TemplateSelector } from '@/components/Resume/TemplateSelector';
 import { ResumePreview } from '@/components/Resume/ResumePreview';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -48,6 +49,10 @@ export const ResumeBuilder: React.FC = () => {
 
   const handleSkillsChange = useCallback((skills: Skill[]) => {
     setResumeData(prev => ({ ...prev, skills }));
+  }, [setResumeData]);
+
+  const handleEducationChange = useCallback((education: Education[]) => {
+    setResumeData(prev => ({ ...prev, education }));
   }, [setResumeData]);
 
   const handleTemplateChange = useCallback((template: TemplateStyle) => {
@@ -172,6 +177,7 @@ export const ResumeBuilder: React.FC = () => {
                 <PersonalInfoForm
                   data={resumeData.personalInfo}
                   onChange={handlePersonalInfoChange}
+                  selectedTemplate={selectedTemplate}
                 />
               </TabsContent>
 
@@ -190,10 +196,10 @@ export const ResumeBuilder: React.FC = () => {
               </TabsContent>
 
               <TabsContent value="education">
-                <div className="text-center py-8 text-text-muted">
-                  <p className="mb-4">Secção de Formação Académica em desenvolvimento.</p>
-                  <p className="text-sm">Esta funcionalidade estará disponível em breve.</p>
-                </div>
+                <EducationForm
+                  education={resumeData.education}
+                  onChange={handleEducationChange}
+                />
               </TabsContent>
             </Tabs>
           </div>
