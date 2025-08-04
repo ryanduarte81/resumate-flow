@@ -2,41 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Professional Resume Builder Design System - Minimalist & Elegant */
 
 @layer base {
   :root {
+    /* Background System */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background-subtle: 210 11% 98%;
+    --background-muted: 210 11% 96%;
+    --foreground: 220 13% 13%;
 
+    /* Card & Surface */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 13% 13%;
+    --card-border: 220 13% 91%;
 
+    /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 13% 13%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Professional Primary - Deep Navy */
+    --primary: 222 84% 20%;
+    --primary-light: 222 84% 35%;
+    --primary-foreground: 0 0% 100%;
+    --primary-muted: 222 84% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Elegant Gray */
+    --secondary: 220 9% 46%;
+    --secondary-light: 220 9% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-muted: 220 9% 96%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Text Hierarchy */
+    --text-primary: 220 13% 13%;
+    --text-secondary: 220 13% 35%;
+    --text-muted: 220 9% 55%;
+    --text-subtle: 220 9% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Professional Blue */
+    --accent: 212 100% 48%;
+    --accent-light: 212 100% 85%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 220 13% 13%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Interactive States */
+    --muted: 220 9% 96%;
+    --muted-foreground: 220 9% 46%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --input-focus: 212 100% 48%;
+    --ring: 212 100% 48%;
 
+    /* Border Radius */
     --radius: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+
+    /* Professional Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(222 84% 20%), hsl(222 84% 35%));
+    --gradient-accent: linear-gradient(135deg, hsl(212 100% 48%), hsl(212 100% 60%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220 9% 98%), hsl(220 9% 96%));
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px -1px hsl(220 13% 13% / 0.1);
+    --shadow-md: 0 4px 12px -2px hsl(220 13% 13% / 0.1);
+    --shadow-lg: 0 8px 25px -5px hsl(220 13% 13% / 0.1);
+    --shadow-elegant: 0 10px 40px -10px hsl(222 84% 20% / 0.15);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-out;
 
     --sidebar-background: 0 0% 98%;
 
