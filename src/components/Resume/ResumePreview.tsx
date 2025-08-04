@@ -30,15 +30,15 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data, template }) 
         <p className="text-sm text-text-muted">Modelo: {template === 'classic' ? 'Clássico' : template === 'creative' ? 'Criativo' : 'Técnico'}</p>
       </div>
       
-      <div className="p-4">
+      <div className="p-4 overflow-auto">
         <div 
           id="resume-preview" 
-          className="bg-white min-h-[297mm] max-w-[210mm] mx-auto shadow-lg"
+          className="bg-white w-full mx-auto shadow-lg overflow-visible"
           style={{ 
             aspectRatio: '210/297',
-            transform: 'scale(0.7)',
+            transform: 'scale(0.75)',
             transformOrigin: 'top center',
-            marginBottom: '-30%'
+            minHeight: 'fit-content'
           }}
         >
           {renderTemplate()}
