@@ -46,15 +46,16 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data, template }) 
         }</p>
       </div>
       
-      <div className="p-4 overflow-auto">
+      <div className="p-4 max-h-[800px] overflow-y-auto">
         <div 
           id="resume-preview" 
-          className="bg-white w-full mx-auto shadow-lg overflow-visible"
+          className="bg-white w-full mx-auto shadow-lg overflow-visible border border-gray-200"
           style={{ 
             aspectRatio: '210/297',
-            transform: 'scale(0.75)',
+            transform: 'scale(0.7)',
             transformOrigin: 'top center',
-            minHeight: 'fit-content'
+            minHeight: '800px',
+            maxHeight: 'none'
           }}
         >
           {renderTemplate()}
