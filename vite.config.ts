@@ -5,10 +5,13 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: process.env.NODE_ENV === 'production' ? '/resumate-flow/' : '/',
+  base: '/resumate-flow/',
   server: {
     host: "::",
     port: 8080,
+  },
+  preview: {
+    port: 4173,
   },
   plugins: [
     react(),
