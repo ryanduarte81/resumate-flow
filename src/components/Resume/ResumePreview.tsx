@@ -3,6 +3,9 @@ import { ResumeData, TemplateStyle } from '@/types/resume';
 import { ClassicTemplate } from './Templates/ClassicTemplate';
 import { CreativeTemplate } from './Templates/CreativeTemplate';
 import { TechnicalTemplate } from './Templates/TechnicalTemplate';
+import { ModernTemplate } from './Templates/ModernTemplate';
+import { ExecutiveTemplate } from './Templates/ExecutiveTemplate';
+import { PortfolioTemplate } from './Templates/PortfolioTemplate';
 
 interface ResumePreviewProps {
   data: ResumeData;
@@ -18,6 +21,12 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data, template }) 
         return <CreativeTemplate data={data} />;
       case 'technical':
         return <TechnicalTemplate data={data} />;
+      case 'modern':
+        return <ModernTemplate data={data} />;
+      case 'executive':
+        return <ExecutiveTemplate data={data} />;
+      case 'portfolio':
+        return <PortfolioTemplate data={data} />;
       default:
         return <ClassicTemplate data={data} />;
     }
@@ -27,7 +36,14 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({ data, template }) 
     <div className="bg-card border border-card-border rounded-lg shadow-elegant overflow-hidden">
       <div className="bg-background-subtle px-4 py-3 border-b border-card-border">
         <h3 className="font-medium text-text-primary">Pré-visualização</h3>
-        <p className="text-sm text-text-muted">Modelo: {template === 'classic' ? 'Clássico' : template === 'creative' ? 'Criativo' : 'Técnico'}</p>
+        <p className="text-sm text-text-muted">Modelo: {
+          template === 'classic' ? 'Clássico' : 
+          template === 'creative' ? 'Criativo' : 
+          template === 'technical' ? 'Técnico' :
+          template === 'modern' ? 'Moderno' :
+          template === 'executive' ? 'Executivo' :
+          template === 'portfolio' ? 'Portfolio' : 'Clássico'
+        }</p>
       </div>
       
       <div className="p-4 overflow-auto">

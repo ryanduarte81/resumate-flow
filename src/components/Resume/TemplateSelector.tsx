@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { TemplateStyle } from '@/types/resume';
-import { FiLayout, FiStar, FiCode } from 'react-icons/fi';
+import { FiLayout, FiStar, FiCode, FiZap, FiBriefcase, FiImage } from 'react-icons/fi';
 
 interface TemplateSelectorProps {
   selectedTemplate: TemplateStyle;
@@ -30,6 +30,27 @@ const templates = [
     description: 'Foco em competências técnicas, ideal para desenvolvimento e TI',
     icon: FiCode,
     preview: 'bg-gradient-to-br from-secondary-muted to-primary-muted'
+  },
+  {
+    id: 'modern' as TemplateStyle,
+    name: 'Moderno',
+    description: 'Design minimalista e elegante com sidebar colorido',
+    icon: FiZap,
+    preview: 'bg-gradient-to-br from-indigo-400 to-purple-500'
+  },
+  {
+    id: 'executive' as TemplateStyle,
+    name: 'Executivo',
+    description: 'Template formal e sofisticado para posições seniores',
+    icon: FiBriefcase,
+    preview: 'bg-gradient-to-br from-gray-700 to-gray-900'
+  },
+  {
+    id: 'portfolio' as TemplateStyle,
+    name: 'Portfolio',
+    description: 'Focado em projetos com design vibrante e colorido',
+    icon: FiImage,
+    preview: 'bg-gradient-to-br from-purple-400 via-pink-400 to-blue-400'
   }
 ];
 
@@ -41,7 +62,7 @@ export const TemplateSelector: React.FC<TemplateSelectorProps> = ({
     <Card className="p-6 border-card-border shadow-elegant">
       <h2 className="text-lg font-semibold text-text-primary mb-6">Escolher Modelo</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {templates.map((template) => {
           const Icon = template.icon;
           const isSelected = selectedTemplate === template.id;

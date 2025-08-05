@@ -77,7 +77,7 @@ export interface ResumeData {
   languages: Language[];
 }
 
-export type TemplateStyle = 'classic' | 'creative' | 'technical';
+export type TemplateStyle = 'classic' | 'creative' | 'technical' | 'modern' | 'executive' | 'portfolio';
 
 export interface ResumeTemplate {
   id: TemplateStyle;
